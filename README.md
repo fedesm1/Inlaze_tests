@@ -1,7 +1,7 @@
 # Prueba técnica Inlaze
 ## Descripción
 
-En esta prueba se realizan verificaciones para algunas de funcionalidades y caracteristicas de la paguina test-qa.inlaze.com, basadas en los siguientes requisitos [Inlaze Requirements](https://drive.google.com/file/d/1L429iS6vXQ28yfasTc9a1an31JPWzp-J/view?usp=sharing)
+En esta prueba se realizan verificaciones para algunas de funcionalidades y caracteristicas de la paguina test-qa.inlaze.com, basadas en los siguientes requisitos [Inlaze Requirements](https://drive.google.com/file/d/1JMPkqDPXQ12rldVpmZlH7QLYiAgtv8jM/view?usp=sharing)
 
 ## Estructura
 
@@ -35,6 +35,8 @@ En esta prueba se realizan verificaciones para algunas de funcionalidades y cara
   - Instala la libreria Selenium dirigiendote a la sección "Python Packages" en la parte inferior izquierda, escribe "Selenium en el buscador y dale en "Install".
   - Crea los tres archivos indicados anteriormente en la sección Estructura con los mismos nombres dando clic derecho en el nombre del proyecyo y seleccionando "Python file".
   - Copia los códigos desde los archivos de este repositorio y pegalos en sus respectivos archivos en tu proyecto de PyCharm.
-  - Dirigete al archivo page.py y en la parte superior derecha dale clic en icono triengular "Run".
+  - Dirigete al archivo page.py y en la parte superior derecha dale clic en icono triangular verde "Run".
+  - Se abrira una pestaña de Chrome y se realizaran las pruebas automaticamente.
+  - Cuando se terminen las pruebas la pestaña se cerrara y en la barra de herramientas en la parte inferior de PyCharm se podra ver los resultados de cada prueba.
     
   
