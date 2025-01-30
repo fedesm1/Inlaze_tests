@@ -1,14 +1,11 @@
 import data
 import elements
-import time
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 
 #Inicializar Controlador
 driver = webdriver.Chrome()
 
-#Se abre la pagina
+#Comando para abrir el sitio web
 driver.get(data.register_url)
 
 #Se instancia el driver de la clase

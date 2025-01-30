@@ -1,12 +1,11 @@
-from time import sleep
-
 from selenium.webdriver.common.devtools.v85.dom import get_attributes
 from typing_extensions import assert_type
-import data
-import time
 from selenium.webdriver.common.keys import Keys
-from selenium import webdriver
 from selenium.webdriver.common.by import By
+from time import sleep
+import time
+import data
+
 
 
 #En esta clase se define la paguina web, y las variables de la clase definen los elementos de la pagina web como atributos de la clase
@@ -18,8 +17,6 @@ class InlazeRegisterPage:
     password_field = (By.XPATH, '/html/body/app-root/app-sign-up/main/section[2]/app-sign-up-form/form/div[3]/app-password/div/input')
     repeat_password_field = (By.XPATH, '/html/body/app-root/app-sign-up/main/section[2]/app-sign-up-form/form/div[4]/app-password/div/input')
     password_match_message = (By.XPATH, "/html/body/app-root/app-sign-up/main/section[2]/app-sign-up-form/form/div[4]/label[2]/span")
-
-
 
     #Segmento de validación
     valid_section = (By.XPATH, '/html/body/app-root/app-sign-up/main/section[2]/app-sign-up-form/form')
@@ -34,7 +31,6 @@ class InlazeRegisterPage:
     sing_in_letters = (By.XPATH, "/html/body/app-root/app-sign-in/main/section[1]/app-sign-in-form/h1")
 
 
-
     #Inicializador de controlador
     def __init__(self, driver):
         self.driver = driver
@@ -42,7 +38,8 @@ class InlazeRegisterPage:
     #Función para realizar acciones de registro
     def register(self):
 
-        ### Prueba 1 registro exitoso con datos validos
+    ### Prueba 1 registro exitoso con datos validos
+
         full_name_field = self.driver.find_element(*self.name_field)
         full_name_field.send_keys(data.data1[0])
 
@@ -87,7 +84,7 @@ class InlazeRegisterPage:
 
 
 
-        ### Prueba 2 resgistro sin confirmar contraseña
+    ### Prueba 2 resgistro sin confirmar contraseña
 
         full_name_field.send_keys(data.data2[0])
         email_signup_field.send_keys(data.data2[1])
@@ -105,7 +102,7 @@ class InlazeRegisterPage:
 
 
 
-        ### Prueba 3 registro sin agregar contraseña invalidado
+    ### Prueba 3 registro sin agregar contraseña invalidado
 
         full_name_field.send_keys(data.data3[0])
         email_signup_field.send_keys(data.data3[1])
@@ -123,7 +120,7 @@ class InlazeRegisterPage:
 
 
 
-        ### Prueba 4 registro sin agregar correo invalidada
+    ### Prueba 4 registro sin agregar correo invalidada
 
         full_name_field.send_keys(data.data4[0])
         email_signup_field.send_keys(data.data4[1])
@@ -141,7 +138,7 @@ class InlazeRegisterPage:
 
 
 
-        ### Prueba 5 registro sin nombre invalidado
+    ### Prueba 5 registro sin nombre invalidado
 
         full_name_field.send_keys(data.data5[0])
         email_signup_field.send_keys(data.data5[1])
@@ -158,9 +155,9 @@ class InlazeRegisterPage:
         clear()
 
 
-        # Saltamos hasta la prueba 8, ya que las pruebas 6 y 7 segun los casos de prueba se realizan en otra pestaña
+    # Saltamos hasta la prueba 8, ya que las pruebas 6 y 7 segun los casos de prueba se realizan en otra pestaña
 
-        ### Prueba 8 el campo "Full name" acepta 2 o más palabras
+    ### Prueba 8 el campo "Full name" acepta 2 o más palabras
 
         full_name_field.send_keys(data.data8[0])
         email_signup_field.send_keys(data.data8[1])
@@ -178,7 +175,7 @@ class InlazeRegisterPage:
 
 
 
-        ### Prueba 9 el campo "Full name"  no acepta solo una palabra
+    ### Prueba 9 el campo "Full name"  no acepta solo una palabra
 
         full_name_field.send_keys(data.data9[0])
         email_signup_field.send_keys(data.data9[1])
@@ -195,8 +192,7 @@ class InlazeRegisterPage:
         clear()
 
 
-
-        ### Prueba 10 el campo "Email" se valida con un formato de correo estandar
+    ### Prueba 10 el campo "Email" se valida con un formato de correo estandar
 
         full_name_field.send_keys(data.data10[0])
         email_signup_field.send_keys(data.data10[1])
@@ -213,11 +209,7 @@ class InlazeRegisterPage:
         clear()
 
 
-
-
-
-
-        ### Prueba 11 el campo "Email" no se valida cuando se ingresa un correo sin el formato estandar.
+    ### Prueba 11 el campo "Email" no se valida cuando se ingresa un correo sin el formato estandar.
 
         full_name_field.send_keys(data.data11[0])
         email_signup_field.send_keys(data.data11[1])
@@ -235,7 +227,7 @@ class InlazeRegisterPage:
 
 
 
-        ### Prueba 12 la contraseña se valida cuando tiene 8 caracteres.
+    ### Prueba 12 la contraseña se valida cuando tiene 8 caracteres.
 
         full_name_field.send_keys(data.data12[0])
         email_signup_field.send_keys(data.data12[1])
@@ -254,7 +246,7 @@ class InlazeRegisterPage:
 
 
 
-        ### Prueba 13 la contraseña no se valida cuando no tiene un caracter especial.
+    ### Prueba 13 la contraseña no se valida cuando no tiene un caracter especial.
 
         full_name_field.send_keys(data.data13[0])
         email_signup_field.send_keys(data.data13[1])
@@ -271,7 +263,7 @@ class InlazeRegisterPage:
                 "Prueba 13 : La contraseña no se valida cuando no tiene un caracter especial., APROBADA.")
         clear()
 
-        ### Prueba 14 la contraseña no se valida cuando no tiene numeros.
+    ### Prueba 14 la contraseña no se valida cuando no tiene numeros.
 
         full_name_field.send_keys(data.data14[0])
         email_signup_field.send_keys(data.data14[1])
@@ -288,7 +280,7 @@ class InlazeRegisterPage:
                 "Prueba 14 : La contraseña no se valida cuando no tiene números, APROBADA.")
         clear()
 
-        ### Prueba 15 la contraseña no se valida cuando no letras minusculas.
+    ### Prueba 15 la contraseña no se valida cuando no letras minusculas.
 
         full_name_field.send_keys(data.data15[0])
         email_signup_field.send_keys(data.data15[1])
@@ -305,7 +297,7 @@ class InlazeRegisterPage:
                 "Prueba 15 : La contraseña no se valida cuando no letras minusculas, APROBADA.")
         clear()
 
-        ### Prueba 16 la contraseña no se valida cuando no letras mayusculas.
+    ### Prueba 16 la contraseña no se valida cuando no letras mayusculas.
 
         full_name_field.send_keys(data.data16[0])
         email_signup_field.send_keys(data.data16[1])
@@ -326,7 +318,7 @@ class InlazeRegisterPage:
 
 
 
-        ### Prueba 17 la contraseña no se valida cuando tiene 7 caracteres.
+    ### Prueba 17 la contraseña no se valida cuando tiene 7 caracteres.
 
         full_name_field.send_keys(data.data17[0])
         email_signup_field.send_keys(data.data17[1])
@@ -346,7 +338,7 @@ class InlazeRegisterPage:
 
 
 
-        ### Prueba 18 la contraseña no se valida cuando tiene 9 caracteres.
+    ### Prueba 18 la contraseña no se valida cuando tiene 9 caracteres.
 
         full_name_field.send_keys(data.data18[0])
         email_signup_field.send_keys(data.data18[1])
@@ -366,7 +358,7 @@ class InlazeRegisterPage:
 
 
 
-        ### Prueba 19 se informa si las contraseñas no coinciden
+    ### Prueba 19 se informa si las contraseñas no coinciden
 
 
 
@@ -393,7 +385,7 @@ class InlazeRegisterPage:
 
 
 
-        ### Prueba 20 no se permite iniciar sesión cuando el campo "Email" esta vacio.
+    ### Prueba 20 no se permite iniciar sesión cuando el campo "Email" esta vacio.
 
         full_name_field.send_keys(data.data20[0])
         email_signup_field.send_keys(data.data20[1])
@@ -447,7 +439,7 @@ class InlazeRegisterPage:
 
         field2 = self.driver.find_element(*self.sing_in_button)
         field2.click()
-        time.sleep(3)
+        time.sleep(1)
         letters = self.driver.find_elements(*self.name_letters)
         name = letters[1].text
 
@@ -467,8 +459,7 @@ class InlazeRegisterPage:
         logout = self.driver.find_element(*self.logout_button)
         logout.click()
 
-
-
+        # Comprobación de la prueba 7
         try:
             letters_of_sing_in = self.driver.find_element(*self.sing_in_letters)
             letter_text = letters_of_sing_in.text
