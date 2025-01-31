@@ -1,11 +1,10 @@
-from selenium.webdriver.common.devtools.v85.dom import get_attributes
-from typing_extensions import assert_type
+from selenium.webdriver.support.expected_conditions import text_to_be_present_in_element
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from typing_extensions import assert_type
 from selenium.webdriver.common.by import By
-from time import sleep
-import time
 import data
-
 
 
 #En esta clase se define la paguina web, y las variables de la clase definen los elementos de la pagina web como atributos de la clase
@@ -13,22 +12,27 @@ class InlazeRegisterPage:
 
     #Elementos de formulario de registro
     name_field = (By.ID, 'full-name')
+    second_name_field = (By.ID, 'full-name')
     email_field = (By.ID, 'email')
     password_field = (By.XPATH, '/html/body/app-root/app-sign-up/main/section[2]/app-sign-up-form/form/div[3]/app-password/div/input')
     repeat_password_field = (By.XPATH, '/html/body/app-root/app-sign-up/main/section[2]/app-sign-up-form/form/div[4]/app-password/div/input')
     password_match_message = (By.XPATH, "/html/body/app-root/app-sign-up/main/section[2]/app-sign-up-form/form/div[4]/label[2]/span")
+    sign_up_button = (By.XPATH, "/html/body/app-root/app-sign-up/main/section[2]/app-sign-up-form/form/button")
+    sign_up_button_back = (By.XPATH, "/html/body/app-root/app-sign-in/main/section[1]/app-sign-in-form/span/a")
+    registration_message =(By.XPATH, "/html/body/app-root/app-toasts-container/div/app-toast/div/div[2]")
 
     #Segmento de validación
     valid_section = (By.XPATH, '/html/body/app-root/app-sign-up/main/section[2]/app-sign-up-form/form')
 
     #Elementos de inicio y cierre de sesión
-    sing_in_email_field = (By.ID, 'email')
-    sing_in_password_field = (By.XPATH, '/html/body/app-root/app-sign-in/main/section[1]/app-sign-in-form/form/div[2]/app-password/div/input')
-    sing_in_button = (By.XPATH, "/html/body/app-root/app-sign-in/main/section[1]/app-sign-in-form/form/button")
+    sign_in_email_field = (By.ID, 'email')
+    sign_in_password_field = (By.XPATH, '/html/body/app-root/app-sign-in/main/section[1]/app-sign-in-form/form/div[2]/app-password/div/input')
+    sign_in_button = (By.XPATH, "/html/body/app-root/app-sign-in/main/section[1]/app-sign-in-form/form/button")
     name_letters = (By.CLASS_NAME,"font-bold")
     avatar_icon = (By.XPATH,"/html/body/app-root/app-panel-root/app-navbar/div/div[2]/div/div/label/div/img")
     logout_button = (By.XPATH,"/html/body/app-root/app-panel-root/app-navbar/div/div[2]/div/ul/li[3]/a")
-    sing_in_letters = (By.XPATH, "/html/body/app-root/app-sign-in/main/section[1]/app-sign-in-form/h1")
+    sign_in_letters = (By.XPATH, "/html/body/app-root/app-sign-in/main/section[1]/app-sign-in-form/h1")
+    welcome_message = (By.XPATH, "/html/body/app-root/app-panel-root/main/section[1]/h2")
 
 
     #Inicializador de controlador
@@ -51,6 +55,8 @@ class InlazeRegisterPage:
 
         repeat_password_field = self.driver.find_element(*self.repeat_password_field)
         repeat_password_field.send_keys(data.data1[2])
+
+        sign_up_button_click = self.driver.find_element(*self.sign_up_button)
 
         #Localizador de validador de formulario
         def locate_validation ():
@@ -83,7 +89,6 @@ class InlazeRegisterPage:
         clear()
 
 
-
     ### Prueba 2 resgistro sin confirmar contraseña
 
         full_name_field.send_keys(data.data2[0])
@@ -101,7 +106,6 @@ class InlazeRegisterPage:
         clear()
 
 
-
     ### Prueba 3 registro sin agregar contraseña invalidado
 
         full_name_field.send_keys(data.data3[0])
@@ -117,7 +121,6 @@ class InlazeRegisterPage:
         else:
             print("Prueba 3 : registro sin agregar contraseña invalidado, APROBADA.")
         clear()
-
 
 
     ### Prueba 4 registro sin agregar correo invalidada
@@ -174,7 +177,6 @@ class InlazeRegisterPage:
         clear()
 
 
-
     ### Prueba 9 el campo "Full name"  no acepta solo una palabra
 
         full_name_field.send_keys(data.data9[0])
@@ -226,7 +228,6 @@ class InlazeRegisterPage:
         clear()
 
 
-
     ### Prueba 12 la contraseña se valida cuando tiene 8 caracteres.
 
         full_name_field.send_keys(data.data12[0])
@@ -243,7 +244,6 @@ class InlazeRegisterPage:
             print(
                 "Prueba 12 : La contraseña de valida cuando tiene 8 caracteres., APROBADA.")
         clear()
-
 
 
     ### Prueba 13 la contraseña no se valida cuando no tiene un caracter especial.
@@ -263,6 +263,7 @@ class InlazeRegisterPage:
                 "Prueba 13 : La contraseña no se valida cuando no tiene un caracter especial., APROBADA.")
         clear()
 
+
     ### Prueba 14 la contraseña no se valida cuando no tiene numeros.
 
         full_name_field.send_keys(data.data14[0])
@@ -280,6 +281,7 @@ class InlazeRegisterPage:
                 "Prueba 14 : La contraseña no se valida cuando no tiene números, APROBADA.")
         clear()
 
+
     ### Prueba 15 la contraseña no se valida cuando no letras minusculas.
 
         full_name_field.send_keys(data.data15[0])
@@ -296,6 +298,7 @@ class InlazeRegisterPage:
             print(
                 "Prueba 15 : La contraseña no se valida cuando no letras minusculas, APROBADA.")
         clear()
+
 
     ### Prueba 16 la contraseña no se valida cuando no letras mayusculas.
 
@@ -360,8 +363,6 @@ class InlazeRegisterPage:
 
     ### Prueba 19 se informa si las contraseñas no coinciden
 
-
-
         full_name_field.send_keys(data.data19[0])
         email_signup_field.send_keys(data.data19[1])
         password_signup_field.send_keys(data.data19[2])
@@ -402,22 +403,64 @@ class InlazeRegisterPage:
                 "Prueba 20 : No se permite iniciar sesión cuando el campo 'Email' esta vacio., APROBADA.")
         clear()
 
-        ### Prueba 21 no se permite iniciar sesión cuando el campo "Password" esta vacio.
+
+    ### Prueba 21 no se permite iniciar sesión cuando el campo "Password" esta vacio.
 
         full_name_field.send_keys(data.data21[0])
         email_signup_field.send_keys(data.data21[1])
         password_signup_field.send_keys(data.data21[2])
         repeat_password_field.send_keys(data.data21[3])
 
-        # Comprobación de la prueba 20
+        # Comprobación de la prueba 21
         try:
             assert 'ng-valid' not in locate_validation(), "---¡ERROR EN PRUEBA 21¡"
         except AssertionError as e:
             print(e)
         else:
-            print(
-                "Prueba 21 : No se permite iniciar sesión cuando el campo 'Password' esta vacio, APROBADA.")
+            print("Prueba 21 : No se permite iniciar sesión cuando el campo 'Password' esta vacio, APROBADA.")
         clear()
+
+
+
+    ### Prueba 22 no se debe poder registrar un usuario ya registrado
+
+        full_name_field.send_keys(data.data22[0])
+        email_signup_field.send_keys(data.data22[1])
+        password_signup_field.send_keys(data.data22[2])
+        repeat_password_field.send_keys(data.data22[2])
+        sign_up_button_click.click()
+
+        sign_up_button_wait = WebDriverWait(self.driver,5).until(EC.presence_of_element_located(InlazeRegisterPage.sign_up_button_back))
+
+        self.driver.get(data.register_url)
+
+        full_name_field = self.driver.find_element(*self.name_field)
+        full_name_field.send_keys(data.data22[0])
+
+        email_signup_field = self.driver.find_element(*self.email_field)
+        email_signup_field.send_keys(data.data22[1])
+
+        password_signup_field = self.driver.find_element(*self.password_field)
+        password_signup_field.send_keys(data.data22[2])
+
+        repeat_password_field = self.driver.find_element(*self.repeat_password_field)
+        repeat_password_field.send_keys(data.data22[2])
+
+        sign_up_button_click = self.driver.find_element(*self.sign_up_button)
+        sign_up_button_click.click()
+
+        registration_valid_wait = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(InlazeRegisterPage.registration_message))
+        registration_valid = self.driver.find_element(*self.registration_message)
+        valid_message = registration_valid.text
+
+        # Comprobación de la prueba 22
+
+        try:
+            assert 'Successful registration!' not in valid_message, "---¡ERROR EN PRUEBA 22, Se valida el registro de un usuario ya registrado¡"
+        except AssertionError as e:
+            print(e)
+        else:
+            print("Prueba 22 : No se debe poder registrar un usuario ya registrado, APROBADA.")
 
 
 
@@ -429,30 +472,32 @@ class InlazeRegisterPage:
 
         self.driver.get(data.sing_in_url)
 
-        ### Prueba 6 nombre de usuario a la vista
+    ### Prueba 6 nombre de usuario a la vista
 
-        field0 = self.driver.find_element(*self.sing_in_email_field)
-        field0.send_keys(data.user_email)
+        sign_in_field = self.driver.find_element(*self.sign_in_email_field)
+        sign_in_field.send_keys(data.user_email)
 
-        field1 = self.driver.find_element(*self.sing_in_password_field)
-        field1.send_keys(data.user_password)
+        password_field = self.driver.find_element(*self.sign_in_password_field)
+        password_field.send_keys(data.user_password)
 
-        field2 = self.driver.find_element(*self.sing_in_button)
-        field2.click()
-        time.sleep(1)
+        sign_in_click = self.driver.find_element(*self.sign_in_button)
+        sign_in_click.click()
+
+        letter_wait = WebDriverWait(self.driver,5).until(EC.presence_of_element_located(InlazeRegisterPage.welcome_message))
         letters = self.driver.find_elements(*self.name_letters)
-        name = letters[1].text
+        name_letters_validation = letters[1].text
 
         # Comprobación de la prueba 6
         try:
-            assert data.user_name == name, "ERROR EN PRUEBA 6"
+            assert data.user_name == name_letters_validation, "---!ERROR EN PRUEBA 6¡"
         except AssertionError as e:
             print(e)
         else:
             print("Prueba 6 : Nombre de usuario a la vista, APROBADA")
 
-        ### Prueba 7 se puede cerrar sesión correctamente
+    ### Prueba 7 se puede cerrar sesión correctamente
 
+        avatar_wait = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(InlazeRegisterPage.avatar_icon))
         avatar_photo = self.driver.find_element(*self.avatar_icon)
         avatar_photo.click()
 
@@ -461,9 +506,9 @@ class InlazeRegisterPage:
 
         # Comprobación de la prueba 7
         try:
-            letters_of_sing_in = self.driver.find_element(*self.sing_in_letters)
+            letters_of_sing_in = self.driver.find_element(*self.sign_in_letters)
             letter_text = letters_of_sing_in.text
-            assert letter_text == "Sign in", "ERROR EN PRUEBA 7"
+            assert letter_text == "Sign in", "---¡ERROR EN PRUEBA 7¡"
         except AssertionError as e:
             print(e)
         else:
