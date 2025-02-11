@@ -10,8 +10,8 @@ En esta prueba se realizan verificaciones para algunas de funcionalidades y cara
 - Archivos del repositorio
   
   - data.py : Contiene los datos de prueba 
-  - elements.py : Contiene los localizadores y métodos para la paguina web
-  - page.py: Contiene los llamados a las pruebas
+  - main.py : Contiene los localizadores y métodos para la paguina web
+  - test_cases.py: Contiene los llamados a las ejecuciones de los casos de pruebas
 
 
 
