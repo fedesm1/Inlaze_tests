@@ -61,7 +61,7 @@ class PageClass:
         return attribute
 
 
-    def valid_data_registration(self):
+    def check_valid_data_registration(self):
 
         full_name_field = self.driver.find_element(*self.name_field).send_keys(data.data1[0])
         email_signup_field = self.driver.find_element(*self.email_field).send_keys(data.data1[1])
@@ -72,7 +72,7 @@ class PageClass:
         assert 'ng-valid' in PageClass.locate_validation(self), "ERROR EN PRUEBA 1"
 
 
-    def bad_password_registration(self):
+    def check_bad_password_registration(self):
 
         PageClass.clear(self)
 
@@ -84,7 +84,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "ERROR EN PRUEBA 2"
 
 
-    def no_password_registration(self):
+    def check_no_password_registration(self):
 
         PageClass.clear(self)
 
@@ -96,7 +96,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "ERROR EN PRUEBA 3"
 
 
-    def no_email_registration(self):
+    def check_no_email_registration(self):
 
         PageClass.clear(self)
 
@@ -108,7 +108,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "ERROR EN PRUEBA 4"
 
 
-    def no_name_registration(self):
+    def check_no_name_registration(self):
 
         PageClass.clear(self)
 
@@ -120,7 +120,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "ERROR EN PRUEBA 5"
 
 
-    def registration_2_words(self):
+    def check_registration_2_words(self):
 
         PageClass.clear(self)
 
@@ -132,7 +132,7 @@ class PageClass:
         assert 'ng-valid' in PageClass.locate_validation(self), "ERROR EN PRUEBA 8"
 
 
-    def registration_1_word(self):
+    def check_registration_1_word(self):
 
         PageClass.clear(self)
 
@@ -144,7 +144,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "ERROR EN PRUEBA 9"
 
 
-    def registration_valid_email(self):
+    def check_registration_valid_email(self):
 
         PageClass.clear(self)
 
@@ -155,7 +155,7 @@ class PageClass:
 
         assert 'ng-valid' in PageClass.locate_validation(self), "ERROR EN PRUEBA 10"
 
-    def registration_invalid_email(self):
+    def check_registration_invalid_email(self):
 
         PageClass.clear(self)
 
@@ -167,7 +167,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "ERROR EN PRUEBA 11"
 
 
-    def registration_8_characters_password(self):
+    def check_registration_8_characters_password(self):
 
         PageClass.clear(self)
 
@@ -179,7 +179,7 @@ class PageClass:
         assert 'ng-valid' in PageClass.locate_validation(self), "ERROR EN PRUEBA 12"
 
 
-    def registration_special_characters_password(self):
+    def check_registration_special_characters_password(self):
 
         PageClass.clear(self)
 
@@ -191,7 +191,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "ERROR EN PRUEBA 13"
 
 
-    def registration_no_numbers_password(self):
+    def check_registration_no_numbers_password(self):
 
         PageClass.clear(self)
 
@@ -203,7 +203,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "ERROR EN PRUEBA 14"
 
 
-    def registration_no_lower_letters_password(self):
+    def check_registration_no_lower_letters_password(self):
 
         PageClass.clear(self)
 
@@ -215,7 +215,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "ERROR EN PRUEBA 15"
 
 
-    def registration_no_upper_letters_password(self):
+    def check_registration_no_upper_letters_password(self):
 
         PageClass.clear(self)
 
@@ -227,7 +227,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "ERROR EN PRUEBA 16"
 
 
-    def registration_7_characters_password(self):
+    def check_registration_7_characters_password(self):
 
         PageClass.clear(self)
 
@@ -239,7 +239,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "ERROR EN PRUEBA 17"
 
 
-    def registration_9_characters_password(self):
+    def check_registration_9_characters_password(self):
 
         PageClass.clear(self)
 
@@ -251,7 +251,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "ERROR EN PRUEBA 18"
 
 
-    def registration_unmatch_password(self):
+    def check_registration_unmatch_password(self):
 
         PageClass.clear(self)
 
@@ -266,7 +266,7 @@ class PageClass:
         assert 'Passwords do not match' in unmatch_message_password_text , "---¡ERROR EN PRUEBA 19¡"
 
 
-    def registration_empty_email(self):
+    def check_registration_empty_email(self):
 
         PageClass.clear(self)
 
@@ -278,7 +278,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "---¡ERROR EN PRUEBA 20¡"
 
 
-    def registration_empty_password(self):
+    def check_registration_empty_password(self):
 
         PageClass.clear(self)
 
@@ -290,7 +290,7 @@ class PageClass:
         assert 'ng-valid' not in PageClass.locate_validation(self), "---¡ERROR EN PRUEBA 21¡"
 
 
-    def registration_double_user_registration(self):
+    def check_registration_double_user_registration(self):
 
         PageClass.clear(self)
 
@@ -327,7 +327,7 @@ class PageClass:
         assert 'Successful registration!' not in valid_message, "---¡ERROR EN PRUEBA 22, Se valida el registro de un usuario ya registrado¡"
 
 
-    def user_name_seen(self):
+    def check_user_name_seen(self):
 
         self.driver.get(data.sing_in_url)
 
@@ -346,7 +346,7 @@ class PageClass:
         assert data.user_name == name_letters_validation, "---!ERROR EN PRUEBA 6¡"
 
 
-    def valid_sign_out(self):
+    def check_valid_sign_out(self):
 
         avatar_wait = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(PageClass.avatar_icon))
         avatar_photo = self.driver.find_element(*self.avatar_icon).click()
